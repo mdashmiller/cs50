@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-// Prototypes
-int find_jpeg(FILE *file);
-
 typedef uint8_t BYTE;
 const int BLOCK = 512;
 
@@ -30,7 +27,7 @@ int main(int argc, char *argv[])
     // Pointer for the files we will write to
     FILE *img;
     // Container for string for file names
-    char filename[9];
+    char filename[8];
     // Track number of jpegs found
     int counter = 0;
 
@@ -41,8 +38,8 @@ int main(int argc, char *argv[])
             if (counter == 0)
             {
                 // Create the first jpeg file to write to
-                sprintf(filename, "%03i.jpeg", counter);
-                counter ++;
+                sprintf(filename, "%03i.jpg", counter);
+                counter++;
 
                 img = fopen(filename, "w");
 
@@ -53,8 +50,8 @@ int main(int argc, char *argv[])
                 // Close the current jpeg file and create another
                 fclose(img);
 
-                sprintf(filename, "%03i.jpeg", counter);
-                counter ++;
+                sprintf(filename, "%03i.jpg", counter);
+                counter++;
 
                 img = fopen(filename, "w");
 
