@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
     // Storage for each block as it is read from file
     BYTE buffer[BLOCK];
     // Pointer for the files we will write to
-    FILE *img;
+    FILE *img = NULL;
     // Container for string for file names
     char filename[8];
     // Track number of jpegs found
