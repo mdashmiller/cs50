@@ -54,14 +54,19 @@ bool check(const char *word)
 // Hashes word to a number
 unsigned int hash(const char *word)
 {
-    int sum = 0;
+    // A version of djb2 by Dan Bernstein
+    // from http://www.cse.yorku.ca/~oz/hash.html
+    unsigned long hash = 5381;
+    int c;
 
-    for (int i = 0; i < strlen(word); i++)
+    while ((c = tolower(*word++)))
     {
-        sum += tolower(word[i]);
+        hash = ((hash << 5) + hash) + c;
     }
 
-    return sum % N;
+    int index = hash % N;
+
+    return index;
 }
 
 // Loads dictionary into memory, returning true if successful, else false
